@@ -38,6 +38,8 @@ public:
 	String getPath() const;
 	void setPath(const String & path);
 
+
+	void setType(const APRSMessageType & type);
 	APRSMessageType getType() const;
 
 	String getRawBody() const;

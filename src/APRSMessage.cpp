@@ -61,6 +61,11 @@ void APRSMessage::setPath(const String & path)
 	_path = path;
 }
 
+void APRSMessage::setType(const APRSMessageType & type)
+{
+	_type = type;
+}
+
 APRSMessageType APRSMessage::getType() const
 {
 	return _type;
