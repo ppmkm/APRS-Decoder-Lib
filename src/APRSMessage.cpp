@@ -3,6 +3,7 @@
 APRSMessage::APRSMessage()
 	: _body(new APRSBody())
 {
+	_type = APRSMessageType::Error;
 }
 
 APRSMessage::APRSMessage(APRSMessage & other_msg)
@@ -61,14 +62,26 @@ void APRSMessage::setPath(const String & path)
 	_path = path;
 }
 
-APRSMessageType APRSMessage::getType() const
+APRSMessageType APRSMessage::getType()
 {
+	if (_type == APRSMessageType::Error)
+	{
+		_type = APRSMessageType(_rawBody[0]);
+	}
 	return _type;
 }
 
 String APRSMessage::getRawBody() const
 {
 	return _rawBody;
+}
+
+
+void APRSMessage::setRawBody(const String &rawBody)
+{
+	_rawBody = rawBody;
+	_type = APRSMessageType(rawBody[0]);
+	_body->setData(rawBody.substring(1));
 }
 
 APRSBody * const APRSMessage::getBody()

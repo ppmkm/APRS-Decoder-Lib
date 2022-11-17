@@ -38,9 +38,10 @@ public:
 	String getPath() const;
 	void setPath(const String & path);
 
-	APRSMessageType getType() const;
+	APRSMessageType getType();
 
 	String getRawBody() const;
+	void setRawBody(const String &rawBody);
 	APRSBody * const getBody();
 
 	virtual bool decode(const String & message);
