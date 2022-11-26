@@ -119,7 +119,7 @@ String APRSMessage::encode() const
 	{
 		msg = msg + "," + _path;
 	}
-	msg = msg  + ":" + _body->encode();
+	msg = msg  + ":" + _rawBody;
 	return msg;
 }
 
